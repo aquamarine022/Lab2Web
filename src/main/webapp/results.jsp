@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.server.Row" %>
+<%@ page import="com.server.ResultsBean" %>
+<%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
 <html lang="ru-RU">
@@ -41,14 +43,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="row" items="${resultsBean.rows}">
+                    <%ResultsBean data = (ResultsBean) request.getSession().getAttribute("resultsBean");
+                        if(data == null){
+                            data = new ResultsBean();
+                            request.setAttribute("resultsBean", data);
+                        }
+                        List<Row> rows = data.getRows();
+                    for(Row row : rows){%>
                         <tr>
-                            <td>{row.x}</td>
-                            <td>{row.y}</td>
-                            <td>{row.r}</td>
-                            <td>{row.result ? "Yes" : "Nope"}</td>
+                            <td><%=row.getX()%></td>
+                            <td><%=row.getY()%></td>
+                            <td><%=row.getR()%></td>
+                            <td><%=row.getResult() ? "Yes" : "Nope"%></td>
                         </tr>
-                    </c:forEach>
+                    <%}%>
                     </tbody>
                 </table>
             </div>

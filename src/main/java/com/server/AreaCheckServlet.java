@@ -11,11 +11,10 @@ import java.io.IOException;
 public class AreaCheckServlet extends HttpServlet {
     @SuppressWarnings("unchecked")
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        ResultsBean resultsBean = (ResultsBean) session.getAttribute("resultsBean");
+        ResultsBean resultsBean = (ResultsBean) req.getSession().getAttribute("resultsBean");
         if (resultsBean == null) {
             resultsBean = new ResultsBean();
-            session.setAttribute("resultsBean", resultsBean);
+            req.getSession().setAttribute("resultsBean", resultsBean);
         }
         try {
             float x = Float.parseFloat(req.getParameter("x"));
@@ -23,12 +22,12 @@ public class AreaCheckServlet extends HttpServlet {
             float r = Float.parseFloat(req.getParameter("r"));
             Row row = new Row(x,y,r, Checker.hit(x,y,r));
             resultsBean.addRow(row);
-            req.setAttribute("new_row", row);
-
+            req.getSession().setAttribute("resultsBean", resultsBean);
         }catch (Exception e){
             e.printStackTrace();
         }
-        req.getRequestDispatcher("results.jsp").forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/results.jsp");
+//        req.getRequestDispatcher("results.jsp").forward(req, resp);
 
     }
     private static class Checker {
