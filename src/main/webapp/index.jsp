@@ -1,6 +1,4 @@
-<%@ page import="com.server.Row" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.server.ResultsBean" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,16 +11,19 @@
     <link rel="stylesheet" href="static/stylesheets/form.css">
     <link rel="stylesheet" href="static/stylesheets/table.css">
     <link rel="icon" href="static/imgs/favicon.ico" type="image/x-icon">
+    <script src="static/js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="static/js/index.js"></script>
+    <script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
 </head>
 <body>
 <header>
     <pre class="head_pre">Брель Мария<br>P3207<br>409322</pre>
 </header>
-<form method="post" id="form">
     <div class="first-row">
-        <div class="container">
-            <div>
-
+        <p id="error_field"></p>
+        <div class="container main_form">
+            <form class="form" id="form">
+            <div class = "form_input">
                 <p class="cordsText">Выберите x:</p>
                 <div class="checkbox-container">
                     <input class="custom-checkbox" type="checkbox" name="x" id="-2" value="-2">
@@ -45,62 +46,26 @@
                     <label for="2" class="custom-button">2</label>
                 </div>
 
-
             </div>
-            <div class="form">
-                <p>Введите y:</p>
-                <input name="y" type="text" placeholder="(от -5 до 5)" maxlength="10">
+            <div class="form_input">
+                <input name="y" type="text" style="margin: 5px" min="-5" max="5" placeholder="Введите y:" maxlength="10">
             </div>
-            <div class="form">
-                <p>Введите R:</p>
-                <input name="r" type="text" placeholder="(от 1 до 4)" maxlength="10">
+            <div class="form_input">
+                <input name="r" type="text" style="margin: 5px" placeholder="Введите R:" maxlength="10">
             </div>
-            <div>
-                <button class="submit-button" id="submit">Проверить попадание</button>
+            <div class="form_input">
+                <input type="submit" class="submit-button" id="submit_button" value="Send">
             </div>
+            </form>
         </div>
         <div>
-            <%@include file="static/imgs/graph.svg" %>
+            <div id="calculator" class="graph" style="width: 400px; height: 400px;"></div>
         </div>
     </div>
-    <div class="results">
-        <table id="resultTable" class="resTable">
-            <thead>
-            <tr>
-                <th>X</th>
-                <th>Y</th>
-                <th>R</th>
-                <th>ОДЗ</th>
-            </tr>
-            </thead>
-            <tbody>
-            <%
-                ResultsBean data = (ResultsBean) request.getSession().getAttribute("resultsBean");
-                if(data == null){
-                    data = new ResultsBean();
-                    request.setAttribute("resultsBean", data);
-                }
-                List<Row> rows = data.getRows();
-                for (Row row : rows) {%>
-            <tr>
-                <td><%=row.getX()%>
-                </td>
-                <td><%=row.getY()%>
-                </td>
-                <td><%=row.getR()%>
-                </td>
-                <td><%=row.getResult() ? "Yes" : "Nope"%>
-                </td>
-            </tr>
-            <%}%>
-            </tbody>
-        </table>
-    </div>
-</form>
+    <jsp:include page="resultTable.jsp"/>
+
 <footer>
     <img src="static/imgs/catty.avif">
 </footer>
-<script src="static/js/jquery-3.7.1.min.js"></script>
-<script src="static/js/index.js"></script>
 </body>
 </html>

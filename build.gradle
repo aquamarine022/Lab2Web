@@ -26,6 +26,13 @@ dependencies {
 
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+  providedCompile 'jakarta.servlet:jakarta.servlet-api:6.1.0'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.0-M2'
+  testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.11.0-M2'
+  implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
+  implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.0'
+  implementation 'jakarta.ejb:jakarta.ejb-api:4.0.1'
+  providedCompile 'jakarta.platform:jakarta.jakartaee-web-api:9.0.0'
 }
 
 test {

@@ -4,22 +4,19 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
     <servlet>
-        <servlet-name>ControllerServlet</servlet-name>
+        <servlet-name>Controller</servlet-name>
         <servlet-class>com.server.ControllerServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>ControllerServlet</servlet-name>
-        <url-pattern>/index</url-pattern>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/controller</url-pattern>
     </servlet-mapping>
-
     <servlet>
-        <servlet-name>AreaCheckServlet</servlet-name>
+        <servlet-name>AreaChecker</servlet-name>
         <servlet-class>com.server.AreaCheckServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>AreaCheckServlet</servlet-name>
-        <url-pattern>/check</url-pattern>
+        <servlet-name>AreaChecker</servlet-name>
+        <url-pattern>/areaCheck</url-pattern>
     </servlet-mapping>
 </web-app>
