@@ -7,6 +7,7 @@ header{
     margin: 0;
     position: fixed;
     background-color: rgb(107, 163, 209);
+    z-index: 1000;
 }
 
 header pre{

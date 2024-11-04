@@ -3,8 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="data" scope="session" class="com.server.Data"/>
-<div class="results">
-    <table id="resTable" class="resTable">
+<div class="results resTableTwo">
+    <table id="resTable" class="resTable" >
         <thead>
         <tr>
             <th>X</th>

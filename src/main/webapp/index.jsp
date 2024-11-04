@@ -19,8 +19,9 @@
 <header>
     <pre class="head_pre">Брель Мария<br>P3207<br>409322</pre>
 </header>
+    <p id="error_field" style="margin-top: 100px"></p>
     <div class="first-row">
-        <p id="error_field"></p>
+
         <div class="container main_form">
             <form class="form" id="form">
             <div class = "form_input">
@@ -65,7 +66,9 @@
     <jsp:include page="resultTable.jsp"/>
 
 <footer>
-    <img src="static/imgs/catty.avif">
+    <a href="https://github.com/aquamarine022/Lab2Web">
+        <img src="static/imgs/catty.avif">
+    </a>
 </footer>
 </body>
 </html>

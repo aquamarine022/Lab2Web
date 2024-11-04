@@ -18,7 +18,7 @@ body{
     flex-direction: row;
     padding: 80px;
     width: 60%;
-    margin-top: 140px;
+    margin-top: 10px;
     margin-bottom: 20px;
     border-radius: 30px;
     background-color: rgba(128, 191, 240, 0.5);
@@ -76,9 +76,8 @@ body{
 
 .graph{
     border: 5px solid rgb(107, 163, 209);
-    border-radius: 15px;
+    border-radius: 1px;
     margin-left: 20px;
-
 }
 
 #error_field {
@@ -89,6 +88,20 @@ body{
     padding: 10px;
     margin: 10px auto;
     max-width: 400px;
+}
+.back{
+    background-color: rgb(107, 163, 209);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 

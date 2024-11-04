@@ -1,6 +1,7 @@
 .resTable {
     width: 100%;
     margin-bottom: 120px;
+    min-width: 600px;
 }
 
 /* Стили заголовка таблицы */
@@ -26,4 +27,9 @@
 .resTable td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
+}
+
+.resTableTwo{
+    margin-top: 110px;
+    margin-bottom: 20px;
 }

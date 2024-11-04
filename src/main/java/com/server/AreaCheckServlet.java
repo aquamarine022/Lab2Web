@@ -31,20 +31,11 @@ public class AreaCheckServlet extends HttpServlet {
             return;
         }
 
-        long startTime = System.nanoTime() / 1000;
-        pointBean.setHit(isHit(pointBean));
-        long endTime = System.nanoTime() / 1000;
-        pointBean.setCalculationTime(endTime - startTime);
 
-//        Data data = (Data) req.getSession().getAttribute("data");
-//        if (data == null) {
-//            data = new Data();
-//            req.getSession().setAttribute("data", data);
-//        }
         data.addRPoint(pointBean);
         req.getSession().setAttribute("data", data);
         if (redirect) {
-            resp.sendRedirect(req.getContextPath() + "results.jsp");
+            resp.sendRedirect(req.getContextPath() + "/results.jsp");
         } else {
             PrintWriter out = resp.getWriter();
             resp.setContentType("application/json");
@@ -66,7 +57,7 @@ public class AreaCheckServlet extends HttpServlet {
         }
 
         if (x >= 0 && y <= 0) {
-            return x <= r / 2 && y >= r / 2 && y <= x - r;
+            return x <= r / 2 && y >= -r / 2 && y >= x - r/2;
         }
 
         if (x >= 0 && y >= 0) {
